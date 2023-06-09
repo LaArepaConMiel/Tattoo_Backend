@@ -37,22 +37,10 @@ public class userController {
 
     @PostMapping( path = "/login")
     public user getULogin(@RequestBody user user){
-        ArrayList<user> users = this.userService.getByPassword(user.getPassword());
-        if(users.size() == 0) return null;
-        for (user obj : users) {
-            if(obj.getPassword().equals(user.getPassword())) return obj;
+        Optional<user> obj = this.userService.getById(user.getUsername());
+        if(obj.isPresent()){
+            if(obj.get().getPassword().equals(user.getPassword())) return obj.get();
         }
         return null;
     }
-
-    @GetMapping( path = "/{id}/{pas}")
-    public user getULogin(@PathVariable("id") String username, @PathVariable("pas") String password){
-        ArrayList<user> users = this.userService.getByPassword(password);
-        if(users.size() == 0) return null;
-        for (user obj : users) {
-            if(obj.getPassword().equals(password)) return obj;
-        }
-        return null;
-    }
-
 }

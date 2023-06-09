@@ -25,8 +25,4 @@ public class userService {
     public Optional<user> getById(String username){
         return userRepository.findById(username);
     }
-
-    public ArrayList<user> getByPassword(String password){
-        return userRepository.findByPassword(password);
-    }
 }
