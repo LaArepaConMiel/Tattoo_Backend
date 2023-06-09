@@ -73,33 +73,4 @@ public class person {
     public void setPhone(int phone) {
         this.phone = phone;
     }
-
-    @Override
-    public String toString() {
-        return "{" +
-            " id='" + getId() + "'" +
-            ", name='" + getName() + "'" +
-            ", lastname='" + getLastname() + "'" +
-            ", born_date='" + getBorn_date() + "'" +
-            ", insta_handle='" + getInsta_handle() + "'" +
-            ", phone='" + getPhone() + "'" +
-            "}";
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof person)) {
-            return false;
-        }
-        person person = (person) o;
-        return Objects.equals(id, person.id) && Objects.equals(name, person.name) && Objects.equals(lastname, person.lastname) && Objects.equals(born_date, person.born_date) && Objects.equals(insta_handle, person.insta_handle) && phone == person.phone;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, lastname, born_date, insta_handle, phone);
-    }
-
 }
