@@ -3,6 +3,8 @@ package com.example.tattoo.services;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.example.tattoo.models.client;
 import com.example.tattoo.models.user;
 import com.example.tattoo.models.application;
@@ -12,14 +14,12 @@ import com.example.tattoo.repositories.applicationRepository;
 
 import java.util.Optional;
 
+@Service
 public class clientService {
-    
     @Autowired
     clientRepository clientRepository;
-
     @Autowired
     userRepository userRepository;
-
     @Autowired
     applicationRepository applicationRepository;
 
@@ -28,8 +28,7 @@ public class clientService {
     }
 
     public Optional<client> getById(Integer id){
-        return clientRepository.findById(id);
-                
+        return clientRepository.findById(id);   
     }
 
     public client saveClient(client cl){
@@ -43,27 +42,12 @@ public class clientService {
         removeClient(clientRepository.findById(username).get());        
     }
 
-    
-
-    public ArrayList<application>appsbyUser(String userId, ArrayList<application> lista){                           
-            for(application c: lista){
-                if(c.getUser().getUsername() != userId){
-                    lista.remove(c);
-                }
-            }
-            return lista;
-    }
-
     public ArrayList<client> getClientsbyUser(String userId){      
         //buscar aplicaciones por user          
-        ArrayList<application> appsbyUser = appsbyUser(userId, (ArrayList<application>) applicationRepository.findAll());
+        ArrayList<application> appsbyUser = applicationRepository.findByUser(new user(userId, "", "",null));
         ArrayList<client> listaClients = new ArrayList<client>();
         //sacarles el cliente
         for(application app: appsbyUser)listaClients.add(app.getClient());
-
-       
         return listaClients;
     }
-
-
 }

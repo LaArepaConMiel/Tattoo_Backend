@@ -12,25 +12,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.tattoo.models.client;
-//import com.example.tattoo.services.clientService;
 import com.example.tattoo.services.clientService;
 
 @RestController
 @RequestMapping("/client")
 public class clientController {
-
-@Autowired
-clientService clientService;
+    @Autowired
+    clientService clientService;
 
     @GetMapping( path = "/{id}")
     public ArrayList<client> getClientsByUser (@PathVariable("id") String id){
         return this.clientService.getClientsbyUser(id); 
     }
-    
-  
+
     @PostMapping()
     public client saveClientModel(@RequestBody client client){
         return this.clientService.saveClient(client);
     }
-
 }
