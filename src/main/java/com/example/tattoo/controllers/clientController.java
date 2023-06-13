@@ -1,0 +1,36 @@
+package com.example.tattoo.controllers;
+
+import java.util.ArrayList;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.tattoo.models.client;
+//import com.example.tattoo.services.clientService;
+import com.example.tattoo.services.clientService;
+
+@RestController
+@RequestMapping("/client")
+public class clientController {
+
+@Autowired
+clientService clientService;
+
+    @GetMapping( path = "/{id}")
+    public ArrayList<client> getClientsByUser (@PathVariable("id") String id){
+        return this.clientService.getClientsbyUser(id); 
+    }
+    
+  
+    @PostMapping()
+    public client saveClientModel(@RequestBody client client){
+        return this.clientService.saveClient(client);
+    }
+
+}
