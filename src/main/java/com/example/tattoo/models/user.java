@@ -1,7 +1,6 @@
 package com.example.tattoo.models;
 
 import jakarta.persistence.*;
-import java.util.Objects;
 
 @Entity
 public class user {
@@ -55,4 +54,15 @@ public class user {
     public void setPerson(person person){
         this.person = person;
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " username='" + getUsername() + "'" +
+            ", email='" + getEmail() + "'" +
+            ", password='" + getPassword() + "'" +
+            ", person='" + getPerson() + "'" +
+            "}";
+    }
+
 }

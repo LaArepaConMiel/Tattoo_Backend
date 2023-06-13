@@ -1,6 +1,5 @@
 package com.example.tattoo.models;
 
-import java.util.Objects;
 import jakarta.persistence.*;
 
 @Entity

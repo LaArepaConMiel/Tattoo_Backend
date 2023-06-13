@@ -1,9 +1,9 @@
 package com.example.tattoo.controllers;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,13 +16,14 @@ import com.example.tattoo.services.clientService;
 
 @RestController
 @RequestMapping("/client")
+@CrossOrigin
 public class clientController {
     @Autowired
     clientService clientService;
 
     @GetMapping( path = "/{id}")
     public ArrayList<client> getClientsByUser (@PathVariable("id") String id){
-        return this.clientService.getClientsbyUser(id); 
+        return this.clientService.getClientsbyUser(id);
     }
 
     @PostMapping()
