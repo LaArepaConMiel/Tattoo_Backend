@@ -27,9 +27,6 @@ public class applicationService {
         return applicationRepository.findById(id);
     }
 
-   
-
-
     public application saveApplication(application application){
         String username = application.getUser().getUsername();
         application.setUser(null);

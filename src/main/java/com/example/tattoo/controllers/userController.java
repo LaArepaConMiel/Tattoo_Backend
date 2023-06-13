@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import com.example.tattoo.services.userService;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin
 public class userController {
     @Autowired
     userService userService;
@@ -39,7 +41,9 @@ public class userController {
     public user getULogin(@RequestBody user user){
         Optional<user> obj = this.userService.getById(user.getUsername());
         if(obj.isPresent()){
-            if(obj.get().getPassword().equals(user.getPassword())) return obj.get();
+            if(obj.get().getPassword().equals(user.getPassword())){
+                return obj.get();
+            } 
         }
         return null;
     }
