@@ -8,7 +8,7 @@ public class application {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @OneToOne(targetEntity = user.class,cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = user.class,cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_user",referencedColumnName = "username")
     @MapKey
     private user user;
