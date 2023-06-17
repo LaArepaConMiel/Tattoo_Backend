@@ -48,8 +48,6 @@ public class scheduleService {
         ArrayList<application> appsbyUser = applicationRepository.findByUser(new user(userId, "", "",null));
         ArrayList<schedule> listaSchedules = new ArrayList<schedule>();
 
-        
-
         //sacarles el schedule
 
        for(application app: appsbyUser)listaSchedules.addAll(scheduleRepository.findByApplication(app));

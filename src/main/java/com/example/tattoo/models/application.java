@@ -24,7 +24,7 @@ public class application {
     public application() {
     }
 
-    public application(user user, tattoo tattoo, client client, String a) {
+    public application(user user, tattoo tattoo, client client) {
         this.user = user;
         this.tattoo = tattoo;
         this.client = client;
