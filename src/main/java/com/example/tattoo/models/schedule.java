@@ -10,32 +10,84 @@ public class schedule {
 
     @OneToOne(targetEntity = application.class,cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_application",referencedColumnName = "id")
-    private application app;
+    private application application;
 
     private Date date;
     private String start;
     private String end;
     private String message;
+    private String status;
+    private Float price;
+    private String category;
+    private Float deposit;
 
     
-    public schedule(application app, Date date, String start, String end, String message) {
-        this.app = app;
-        this.date = date;
-        this.start = start;
-        this.end = end;
-        this.message = message;
-    }
-
-
     
-    public schedule(Integer id, application app, Date date, String start, String end, String message) {
+     
+
+    public schedule(Integer id, application app, Date date, String start, String end, String message, String status,
+            Float price, String category, Float deposit) {
         this.id = id;
-        this.app = app;
+        this.application = app;
         this.date = date;
         this.start = start;
         this.end = end;
         this.message = message;
+        this.status = status;
+        this.price = price;
+        this.category = category;
+        this.deposit = deposit;
     }
+
+
+
+    public String getStatus() {
+        return status;
+    }
+
+
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+
+
+    public Float getPrice() {
+        return price;
+    }
+
+
+
+    public void setPrice(Float price) {
+        this.price = price;
+    }
+
+
+
+    public String getCategory() {
+        return category;
+    }
+
+
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+
+
+    public Float getDeposit() {
+        return deposit;
+    }
+
+
+
+    public void setDeposit(Float deposit) {
+        this.deposit = deposit;
+    }
+
+
 
     public schedule() {
     }
@@ -49,10 +101,10 @@ public class schedule {
         this.id = id;
     }
     public application getApp() {
-        return app;
+        return application;
     }
     public void setApp(application app) {
-        this.app = app;
+        this.application = app;
     }
     public Date getDate() {
         return date;

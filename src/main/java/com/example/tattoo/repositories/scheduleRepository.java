@@ -6,11 +6,10 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.example.tattoo.models.application;
+import com.example.tattoo.models.schedule;
 import com.example.tattoo.models.user;
 
 @Repository
-public interface applicationRepository extends CrudRepository<application, Integer> {
-    public abstract ArrayList<application> findByUser(user user);
-     
-    
+public interface scheduleRepository extends CrudRepository<schedule, Integer> {
+    public abstract ArrayList<schedule> findByApplication(application application);
 }
