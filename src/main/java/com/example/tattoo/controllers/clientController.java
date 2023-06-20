@@ -3,7 +3,9 @@ package com.example.tattoo.controllers;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +26,11 @@ public class clientController {
     @GetMapping( path = "/{id}")
     public ArrayList<client> getClientsByUser (@PathVariable("id") String id){
         return this.clientService.getClientsbyUser(id);
+    }
+
+    @DeleteMapping(path = "/{id}")
+    public void deleteClient(@PathVariable("id") Integer id) {
+         clientService.removeById(id);      
     }
 
     @PostMapping()

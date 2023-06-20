@@ -1,6 +1,7 @@
 package com.example.tattoo.services;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,8 +40,13 @@ public class clientService {
     }
 
     public void removeById(Integer username){
-        removeClient(clientRepository.findById(username).get());        
+        removeClient(clientRepository.findById(username).get());  
+        
+        
+
     }
+
+
 
     public ArrayList<client> getClientsbyUser(String userId){      
         //buscar aplicaciones por user          
