@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,9 +22,20 @@ public class scheduleController {
     @Autowired
     scheduleService scheduleService;
 
-    @GetMapping( path = "/{id}")
+    @GetMapping()
+    public ArrayList<schedule> getSchedules() {
+        return scheduleService.getSchedules();
+    }
+
+    @GetMapping( path = "/user/{id}")
     public ArrayList<schedule> getSchedulesByUser(@PathVariable("id") String id){
         return this.scheduleService.getSchedulesbyUser(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteSchedule(@PathVariable("id") Integer id) {
+        Optional<schedule> schedule = scheduleService.getById(id).get();
+        schedule.ifPresent(scheduleService::removeSchedule);
     }
 
     @PostMapping()
