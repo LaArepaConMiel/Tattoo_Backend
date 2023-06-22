@@ -1,6 +1,7 @@
 package com.example.tattoo.controllers;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -34,7 +35,7 @@ public class scheduleController {
 
     @DeleteMapping("/{id}")
     public void deleteSchedule(@PathVariable("id") Integer id) {
-        Optional<schedule> schedule = scheduleService.getById(id).get();
+        Optional<schedule> schedule = scheduleService.getById(id);
         schedule.ifPresent(scheduleService::removeSchedule);
     }
 

@@ -8,6 +8,8 @@ public class schedule {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+
+    //puede ser many to one, ampliaremos jj
     @OneToOne(targetEntity = application.class,cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_application",referencedColumnName = "id")
     private application application;
