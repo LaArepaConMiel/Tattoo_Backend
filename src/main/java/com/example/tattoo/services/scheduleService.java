@@ -1,7 +1,7 @@
 package com.example.tattoo.services;
 
 
-import java.util.ArrayList;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -41,11 +41,13 @@ public class scheduleService {
         scheduleRepository.delete(cl);
     }
 
+
     
+
 
     public ArrayList<schedule> getSchedulesbyUser(String userId){      
         //buscar aplicaciones por user          
-        ArrayList<application> appsbyUser = applicationRepository.findByUser(new user(userId, "", "",null));
+        ArrayList<application> appsbyUser = applicationRepository.findByUser(new user(userId, "", "",null)).get();
         ArrayList<schedule> listaSchedules = new ArrayList<schedule>();
 
         //sacarles el schedule

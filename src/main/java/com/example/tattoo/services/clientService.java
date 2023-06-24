@@ -46,11 +46,11 @@ public class clientService {
 
     }
 
-
+    
 
     public ArrayList<client> getClientsbyUser(String userId){      
         //buscar aplicaciones por user          
-        ArrayList<application> appsbyUser = applicationRepository.findByUser(new user(userId, "", "",null));
+        ArrayList<application> appsbyUser = applicationRepository.findByUser(new user(userId, "", "",null)).get();
         ArrayList<client> listaClients = new ArrayList<client>();
         //sacarles el cliente
         for(application app: appsbyUser)listaClients.add(app.getClient());

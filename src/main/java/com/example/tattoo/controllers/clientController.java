@@ -16,10 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.tattoo.models.client;
 import com.example.tattoo.services.clientService;
 
+
+
+
 @RestController
 @RequestMapping("/client")
-@CrossOrigin
+@CrossOrigin()
 public class clientController {
+    
     @Autowired
     clientService clientService;
 

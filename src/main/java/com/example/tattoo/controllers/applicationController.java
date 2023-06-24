@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.tattoo.models.application;
+import com.example.tattoo.models.user;
 import com.example.tattoo.services.applicationService;
 
 @RestController
@@ -31,6 +32,11 @@ public class applicationController {
     @PostMapping()
     public application saveApplicationModel(@RequestBody application application){
         return this.applicationService.saveApplication(application);
+    }
+
+    @GetMapping(path="/user/{username}")
+    public ArrayList<application> getApplicationsByUser(@PathVariable("username") String username){
+        return this.applicationService.getApplicationsByUser(new user(username)).get();
     }
 
     @PutMapping

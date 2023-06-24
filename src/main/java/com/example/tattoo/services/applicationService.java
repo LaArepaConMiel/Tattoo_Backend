@@ -27,6 +27,10 @@ public class applicationService {
         return applicationRepository.findById(id);
     }
 
+    public Optional<ArrayList<application>> getApplicationsByUser(user user){
+        return applicationRepository.findByUser(user);
+    }
+
     public application saveApplication(application application){
         String username = application.getUser().getUsername();
         application.setUser(null);
