@@ -10,30 +10,27 @@ public class schedule {
 
 
     //puede ser many to one, ampliaremos jj
-    @OneToOne(targetEntity = application.class,cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = application.class,cascade = CascadeType.ALL)
     @JoinColumn(name = "FK_application",referencedColumnName = "id")
     private application application;
 
     private Date date;
-    private String start;
-    private String end;
+    private String startSession;
+    private String endSession;
     private String message;
     private String status;
     private Float price;
     private String category;
     private Float deposit;
-
-    
-    
-     
+  
 
     public schedule(Integer id, application app, Date date, String start, String end, String message, String status,
             Float price, String category, Float deposit) {
         this.id = id;
         this.application = app;
         this.date = date;
-        this.start = start;
-        this.end = end;
+        this.startSession = start;
+        this.endSession = end;
         this.message = message;
         this.status = status;
         this.price = price;
@@ -114,17 +111,17 @@ public class schedule {
     public void setDate(Date date) {
         this.date = date;
     }
-    public String getStart() {
-        return start;
+    public String getStartSession() {
+        return startSession;
     }
-    public void setStart(String start) {
-        this.start = start;
+    public void setStartSession(String start) {
+        this.startSession = start;
     }
-    public String getEnd() {
-        return end;
+    public String getEndSession() {
+        return endSession;
     }
-    public void setEnd(String end) {
-        this.end = end;
+    public void setEndSession(String end) {
+        this.endSession = end;
     }
     public String getMessage() {
         return message;
