@@ -34,8 +34,24 @@ public class scheduleService {
         return scheduleRepository.findById(id);   
     }
 
-    public schedule saveSchedule(schedule cl){
-        return scheduleRepository.save(cl);
+    public schedule saveSchedule(schedule session){
+        Integer idApp = session.getApp().getId();
+        session.setApp(null);
+        schedule newSesh = scheduleRepository.save(session);
+        newSesh.setApp(new application(idApp));
+        newSesh = updateSchedule(session);
+        return newSesh;
+    }
+
+    public schedule updateSchedule(schedule session){
+        Optional<schedule> newSesh = getById(session.getId());
+        if(newSesh.isPresent()){
+            application app = applicationRepository.findById(session.getApp().getId()).get();
+            newSesh.get().setApp(app);
+            scheduleRepository.save(newSesh.get());
+            return newSesh.get();
+        }
+        return null;
     }
     public void removeSchedule(schedule cl){
         scheduleRepository.delete(cl);

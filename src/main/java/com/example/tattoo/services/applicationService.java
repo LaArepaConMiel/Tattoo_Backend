@@ -41,12 +41,12 @@ public class applicationService {
     }
 
     public application updateApplication(application application){
-        Optional<application> updateApplication = getById(application.getId());
-        if(updateApplication.isPresent()){
+        Optional<application> newApp = getById(application.getId());
+        if(newApp.isPresent()){
             user user = userRepository.findById(application.getUser().getUsername()).get();
-            updateApplication.get().setUser(user);
-            applicationRepository.save(updateApplication.get());
-            return updateApplication.get();
+            newApp.get().setUser(user);
+            applicationRepository.save(newApp.get());
+            return newApp.get();
         }else{
             return null;
         }

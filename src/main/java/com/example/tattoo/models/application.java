@@ -21,6 +21,13 @@ public class application {
     @JoinColumn(name = "FK_client",referencedColumnName = "id")
     private client client;
 
+    public application(Integer id) {
+        this.id = id;
+        this.user = null;
+        this.tattoo = null;
+        this.client = null;
+    }
+
     public application() {
     }
 
@@ -29,6 +36,8 @@ public class application {
         this.tattoo = tattoo;
         this.client = client;
     }
+
+
 
     public Integer getId() {
         return id;
