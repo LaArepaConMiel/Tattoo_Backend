@@ -19,6 +19,7 @@ import com.example.tattoo.services.scheduleService;
 @RestController
 @RequestMapping("/schedule")
 @CrossOrigin
+
 public class scheduleController {
     @Autowired
     scheduleService scheduleService;

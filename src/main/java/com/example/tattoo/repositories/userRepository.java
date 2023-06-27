@@ -10,5 +10,4 @@ import com.example.tattoo.models.user;
 
 @Repository
 public interface userRepository extends CrudRepository<user, String>{
-    
 }

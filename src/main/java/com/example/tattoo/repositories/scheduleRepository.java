@@ -12,5 +12,4 @@ import com.example.tattoo.models.schedule;
 @Repository
 public interface scheduleRepository extends CrudRepository<schedule, Integer> {
     public abstract ArrayList<schedule> findByApplication(application application);
-
 }
